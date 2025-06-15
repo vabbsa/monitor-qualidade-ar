@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor de Qualidade do Ar</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-wind"></i>
+                <span>AirMonitor</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a th:href="@{/}" class="nav-link active">
+                        <i class="fas fa-home"></i> Início
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/tips}" class="nav-link">
+                        <i class="fas fa-lightbulb"></i> Dicas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/about}" class="nav-link">
+                        <i class="fas fa-info-circle"></i> Sobre
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="hero-section">
+            <div class="container">
+                <h1 class="hero-title">Monitor de Qualidade do Ar</h1>
+                <p class="hero-subtitle">Monitore a qualidade do ar em tempo real e receba dicas para um ambiente mais saudável</p>
+                
+                <div class="search-section">
+                    <form th:action="@{/search}" method="post" class="search-form">
+                        <div class="form-group">
+                            <label for="city">Selecione sua cidade:</label>
+                            <select id="city" name="city" class="city-select" required>
+                                <option value="">Escolha uma cidade...</option>
+                                <option th:each="city : ${cities}" 
+                                        th:value="${city}" 
+                                        th:text="${city}"
+                                        th:selected="${city == selectedCity}">
+                                </option>
+                            </select>
+                        </div>
+                        <button type="submit" class="search-btn">
+                            <i class="fas fa-search"></i> Consultar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${airQualityData}" class="results-section">
+            <div class="container">
+                <div class="air-quality-card">
+                    <div class="card-header">
+                        <h2>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span th:text="${airQualityData.city}"></span>
+                        </h2>
+                        <p class="timestamp" th:text="'Atualizado em: ' + ${airQualityData.timestamp}"></p>
+                    </div>
+                    
+                    <div class="aqi-display">
+                        <div class="aqi-circle" th:classappend="${airQualityData.aqi <= 50 ? 'good' : 
+                                                                 airQualityData.aqi <= 100 ? 'moderate' : 
+                                                                 airQualityData.aqi <= 150 ? 'unhealthy-sensitive' : 
+                                                                 airQualityData.aqi <= 200 ? 'unhealthy' : 
+                                                                 airQualityData.aqi <= 300 ? 'very-unhealthy' : 'hazardous'}">
+                            <div class="aqi-value" th:text="${airQualityData.aqi}"></div>
+                            <div class="aqi-label">AQI</div>
+                        </div>
+                        <div class="aqi-info">
+                            <h3 class="status" th:text="${airQualityData.status}"></h3>
+                            <p class="recommendation" th:text="${airQualityData.healthRecommendation}"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="pollutants-grid">
+                        <div class="pollutant-card">
+                            <div class="pollutant-icon">
+                                <i class="fas fa-smog"></i>
+                            </div>
+                            <div class="pollutant-info">
+                                <h4>PM2.5</h4>
+                                <span class="value" th:text="${#numbers.formatDecimal(airQualityData.pm25, 1, 1)} + ' μg/m³'"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="pollutant-card">
+                            <div class="pollutant-icon">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <div class="pollutant-info">
+                                <h4>PM10</h4>
+                                <span class="value" th:text="${#numbers.formatDecimal(airQualityData.pm10, 1, 1)} + ' μg/m³'"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="pollutant-card">
+                            <div class="pollutant-icon">
+                                <i class="fas fa-sun"></i>
+                            </div>
+                            <div class="pollutant-info">
+                                <h4>O₃</h4>
+                                <span class="value" th:text="${#numbers.formatDecimal(airQualityData.o3, 1, 1)} + ' μg/m³'"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="pollutant-card">
+                            <div class="pollutant-icon">
+                                <i class="fas fa-industry"></i>
+                            </div>
+                            <div class="pollutant-info">
+                                <h4>NO₂</h4>
+                                <span class="value" th:text="${#numbers.formatDecimal(airQualityData.no2, 1, 1)} + ' μg/m³'"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="pollutant-card">
+                            <div class="pollutant-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div class="pollutant-info">
+                                <h4>SO₂</h4>
+                                <span class="value" th:text="${#numbers.formatDecimal(airQualityData.so2, 1, 1)} + ' μg/m³'"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="pollutant-card">
+                            <div class="pollutant-icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <div class="pollutant-info">
+                                <h4>CO</h4>
+                                <span class="value" th:text="${#numbers.formatDecimal(airQualityData.co, 1, 1)} + ' mg/m³'"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${error}" class="error-section">
+            <div class="container">
+                <div class="error-card">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p th:text="${error}"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="container">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Monitoramento em Tempo Real</h3>
+                        <p>Dados atualizados constantemente para fornecer informações precisas sobre a qualidade do ar.</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>Recomendações de Saúde</h3>
+                        <p>Receba orientações personalizadas baseadas nos níveis de poluição da sua região.</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Dicas Sustentáveis</h3>
+                        <p>Aprenda como contribuir para melhorar a qualidade do ar através de ações simples.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 AirMonitor. Desenvolvido para conscientização ambiental.</p>
+        </div>
+    </footer>
+
+    <script th:src="@{/js/script.js}"></script>
+</body>
+</html>
+

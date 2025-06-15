@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dicas Sustentáveis - Monitor de Qualidade do Ar</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-wind"></i>
+                <span>AirMonitor</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a th:href="@{/}" class="nav-link">
+                        <i class="fas fa-home"></i> Início
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/tips}" class="nav-link active">
+                        <i class="fas fa-lightbulb"></i> Dicas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/about}" class="nav-link">
+                        <i class="fas fa-info-circle"></i> Sobre
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="hero-section">
+            <div class="container">
+                <h1 class="hero-title">Dicas para Melhorar a Qualidade do Ar</h1>
+                <p class="hero-subtitle">Pequenas ações que fazem uma grande diferença para o meio ambiente</p>
+            </div>
+        </div>
+
+        <div class="tips-section">
+            <div class="container">
+                <div class="tips-filter">
+                    <button class="filter-btn active" data-category="all">
+                        <i class="fas fa-globe"></i> Todas
+                    </button>
+                    <button class="filter-btn" data-category="Transporte">
+                        <i class="fas fa-car"></i> Transporte
+                    </button>
+                    <button class="filter-btn" data-category="Energia">
+                        <i class="fas fa-bolt"></i> Energia
+                    </button>
+                    <button class="filter-btn" data-category="Doméstico">
+                        <i class="fas fa-home"></i> Doméstico
+                    </button>
+                    <button class="filter-btn" data-category="Reciclagem">
+                        <i class="fas fa-recycle"></i> Reciclagem
+                    </button>
+                    <button class="filter-btn" data-category="Comunidade">
+                        <i class="fas fa-users"></i> Comunidade
+                    </button>
+                </div>
+
+                <div class="tips-grid">
+                    <div th:each="tip : ${tips}" 
+                         class="tip-card" 
+                         th:data-category="${tip.category}">
+                        <div class="tip-icon" th:text="${tip.icon}"></div>
+                        <div class="tip-content">
+                            <h3 th:text="${tip.title}"></h3>
+                            <p th:text="${tip.description}"></p>
+                            <span class="tip-category" th:text="${tip.category}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="impact-section">
+            <div class="container">
+                <h2>Seu Impacto Positivo</h2>
+                <div class="impact-grid">
+                    <div class="impact-card">
+                        <div class="impact-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <div class="impact-number">1.2 ton</div>
+                        <div class="impact-label">CO₂ economizado por ano usando transporte público</div>
+                    </div>
+                    
+                    <div class="impact-card">
+                        <div class="impact-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="impact-number">80%</div>
+                        <div class="impact-label">Menos energia consumida com lâmpadas LED</div>
+                    </div>
+                    
+                    <div class="impact-card">
+                        <div class="impact-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <div class="impact-number">75%</div>
+                        <div class="impact-label">Redução de resíduos com reciclagem adequada</div>
+                    </div>
+                    
+                    <div class="impact-card">
+                        <div class="impact-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="impact-number">22kg</div>
+                        <div class="impact-label">CO₂ absorvido por uma árvore por ano</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="call-to-action">
+            <div class="container">
+                <h2>Comece Hoje Mesmo!</h2>
+                <p>Escolha uma dica e comece a fazer a diferença. Cada pequena ação conta para um futuro mais sustentável.</p>
+                <a th:href="@{/}" class="cta-button">
+                    <i class="fas fa-chart-line"></i>
+                    Verificar Qualidade do Ar
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 AirMonitor. Desenvolvido para conscientização ambiental.</p>
+        </div>
+    </footer>
+
+    <script th:src="@{/js/script.js}"></script>
+</body>
+</html>
+

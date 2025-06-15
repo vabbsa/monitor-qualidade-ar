@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - Monitor de Qualidade do Ar</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-wind"></i>
+                <span>AirMonitor</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a th:href="@{/}" class="nav-link">
+                        <i class="fas fa-home"></i> Início
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/tips}" class="nav-link">
+                        <i class="fas fa-lightbulb"></i> Dicas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/about}" class="nav-link active">
+                        <i class="fas fa-info-circle"></i> Sobre
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="hero-section">
+            <div class="container">
+                <h1 class="hero-title">Sobre o AirMonitor</h1>
+                <p class="hero-subtitle">Tecnologia a serviço da conscientização ambiental</p>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Nossa Missão</h2>
+                        <p>
+                            Com a crescente urbanização e industrialização, a qualidade do ar nas cidades tem se deteriorado, 
+                            afetando significativamente a saúde pública. Diante deste cenário, torna-se essencial desenvolver 
+                            ferramentas que proporcionem informações acessíveis sobre a qualidade do ar urbano.
+                        </p>
+                        <p>
+                            O AirMonitor foi desenvolvido com o objetivo duplo de fornecer dados em tempo real sobre a qualidade 
+                            do ar e educar os usuários sobre ações cotidianas que podem ajudar a melhorar a qualidade do ar, 
+                            incentivando um comportamento mais sustentável e consciente.
+                        </p>
+                    </div>
+                    
+                    <div class="about-features">
+                        <h2>Funcionalidades</h2>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <i class="fas fa-chart-bar"></i>
+                                <h3>Monitoramento em Tempo Real</h3>
+                                <p>Dados atualizados sobre a qualidade do ar utilizando APIs públicas de monitoramento ambiental.</p>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <h3>Módulo Educativo</h3>
+                                <p>Dicas e informações sobre como cada indivíduo pode contribuir para reduzir a poluição.</p>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <i class="fas fa-mobile-alt"></i>
+                                <h3>Interface Amigável</h3>
+                                <p>Design responsivo que incentiva a interação e o engajamento dos usuários.</p>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <i class="fas fa-heartbeat"></i>
+                                <h3>Recomendações de Saúde</h3>
+                                <p>Orientações baseadas nos níveis de poluição para proteger sua saúde.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="methodology-section">
+            <div class="container">
+                <h2>Metodologia</h2>
+                <div class="methodology-content">
+                    <p>
+                        A construção do aplicativo foi realizada através da integração de Java com APIs de dados ambientais 
+                        para coletar informações sobre a qualidade do ar. O método inclui a pesquisa e seleção de dados 
+                        confiáveis e a implementação de uma interface amigável que incentive a interação e o engajamento dos usuários.
+                    </p>
+                    
+                    <div class="tech-stack">
+                        <h3>Tecnologias Utilizadas</h3>
+                        <div class="tech-grid">
+                            <div class="tech-item">
+                                <i class="fab fa-java"></i>
+                                <span>Java Spring Boot</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-leaf"></i>
+                                <span>Thymeleaf</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fab fa-html5"></i>
+                                <span>HTML5</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fab fa-css3-alt"></i>
+                                <span>CSS3</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fab fa-js"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-cloud"></i>
+                                <span>APIs REST</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="results-section">
+            <div class="container">
+                <h2>Resultados Esperados</h2>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <div class="result-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Conscientização</h3>
+                        <p>Aumento da conscientização sobre as questões de qualidade do ar na população.</p>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Mobilização Comunitária</h3>
+                        <p>Mobilização da comunidade para ações que contribuam para a melhoria ambiental.</p>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Compreensão Pública</h3>
+                        <p>Melhor compreensão pública das condições ambientais locais.</p>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>Participação Cidadã</h3>
+                        <p>Aumento da participação cidadã em iniciativas de sustentabilidade urbana.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="future-section">
+            <div class="container">
+                <h2>Manutenção Evolutiva</h2>
+                <div class="future-content">
+                    <p>
+                        Para projetos futuros, planejamos implementar as seguintes funcionalidades evolutivas:
+                    </p>
+                    
+                    <div class="future-features">
+                        <div class="future-feature">
+                            <i class="fas fa-bell"></i>
+                            <h3>Sistema de Alertas</h3>
+                            <p>Notificações push quando a qualidade do ar atingir níveis perigosos na região do usuário.</p>
+                        </div>
+                        
+                        <div class="future-feature">
+                            <i class="fas fa-map"></i>
+                            <h3>Mapa Interativo</h3>
+                            <p>Visualização em mapa com dados de qualidade do ar em tempo real de múltiplas estações.</p>
+                        </div>
+                        
+                        <div class="future-feature">
+                            <i class="fas fa-chart-area"></i>
+                            <h3>Histórico e Tendências</h3>
+                            <p>Gráficos históricos e análise de tendências da qualidade do ar ao longo do tempo.</p>
+                        </div>
+                        
+                        <div class="future-feature">
+                            <i class="fas fa-user-circle"></i>
+                            <h3>Perfil Personalizado</h3>
+                            <p>Recomendações personalizadas baseadas no perfil de saúde e localização do usuário.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="call-to-action">
+            <div class="container">
+                <h2>Faça Parte da Mudança</h2>
+                <p>A implementação de tecnologias que facilitam o acesso à informação ambiental representa uma estratégia vital para enfrentar os desafios da poluição do ar.</p>
+                <a th:href="@{/}" class="cta-button">
+                    <i class="fas fa-wind"></i>
+                    Começar Monitoramento
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 AirMonitor. Desenvolvido para conscientização ambiental.</p>
+        </div>
+    </footer>
+
+    <script th:src="@{/js/script.js}"></script>
+</body>
+</html>
+

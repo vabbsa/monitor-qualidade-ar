@@ -1,0 +1,7 @@
+com\airquality\monitor\model\AirQualityData.class
+com\airquality\monitor\service\TipService.class
+com\airquality\monitor\AirQualityMonitorApplication.class
+com\airquality\monitor\controller\HomeController.class
+com\airquality\monitor\service\AirQualityService.class
+com\airquality\monitor\model\Tip.class
+com\airquality\monitor\controller\ApiController.class
