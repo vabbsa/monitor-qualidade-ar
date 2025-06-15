@@ -1,4 +1,4 @@
-/* Reset e configurações básicas */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +12,6 @@ body {
     background-color: #ffffff;
 }
 
-/* Variáveis CSS para cores */
 :root {
     --primary-blue: #2563eb;
     --secondary-blue: #3b82f6;
@@ -27,7 +26,7 @@ body {
     --danger: #ef4444;
 }
 
-/* Navegação */
+
 .navbar {
     background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
     padding: 1rem 0;
@@ -83,7 +82,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Conteúdo principal */
 .main-content {
     min-height: calc(100vh - 140px);
 }
@@ -94,7 +92,6 @@ body {
     padding: 0 2rem;
 }
 
-/* Seção hero */
 .hero-section {
     background: linear-gradient(135deg, var(--light-blue), var(--white));
     padding: 4rem 0;
@@ -117,7 +114,6 @@ body {
     margin-right: auto;
 }
 
-/* Seção de busca */
 .search-section {
     margin-top: 2rem;
 }
@@ -178,7 +174,6 @@ body {
     box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
 }
 
-/* Seção de resultados */
 .results-section {
     padding: 4rem 0;
     background-color: var(--light-gray);
@@ -212,7 +207,6 @@ body {
     font-size: 0.9rem;
 }
 
-/* Display do AQI */
 .aqi-display {
     display: flex;
     align-items: center;
@@ -285,7 +279,6 @@ body {
     line-height: 1.6;
 }
 
-/* Grid de poluentes */
 .pollutants-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -329,7 +322,6 @@ body {
     color: var(--dark-gray);
 }
 
-/* Seção de informações */
 .info-section {
     padding: 4rem 0;
     background-color: var(--white);
@@ -377,7 +369,6 @@ body {
     line-height: 1.6;
 }
 
-/* Página de dicas */
 .tips-section {
     padding: 4rem 0;
     background-color: var(--light-gray);
@@ -465,7 +456,6 @@ body {
     font-weight: 600;
 }
 
-/* Seção de impacto */
 .impact-section {
     padding: 4rem 0;
     background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
@@ -508,7 +498,6 @@ body {
     opacity: 0.9;
 }
 
-/* Página sobre */
 .about-section {
     padding: 4rem 0;
     background-color: var(--white);
@@ -717,7 +706,6 @@ body {
     line-height: 1.6;
 }
 
-/* Call to action */
 .call-to-action {
     padding: 4rem 0;
     background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
@@ -755,7 +743,6 @@ body {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* Seção de erro */
 .error-section {
     padding: 2rem 0;
     background-color: var(--light-gray);
@@ -778,7 +765,6 @@ body {
     font-size: 1.5rem;
 }
 
-/* Footer */
 .footer {
     background-color: var(--dark-gray);
     color: var(--white);
@@ -786,7 +772,6 @@ body {
     padding: 2rem 0;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
     .nav-container {
         flex-direction: column;
@@ -868,7 +853,6 @@ body {
     }
 }
 
-/* Animações */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -887,7 +871,6 @@ body {
     animation: fadeIn 0.6s ease-out;
 }
 
-/* Estados de hover melhorados */
 .tip-card:hover,
 .info-card:hover,
 .result-card:hover,
@@ -895,7 +878,6 @@ body {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Scrollbar personalizada */
 ::-webkit-scrollbar {
     width: 8px;
 }
