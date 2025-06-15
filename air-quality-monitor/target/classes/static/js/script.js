@@ -1,13 +1,11 @@
-// Aguarda o carregamento completo do DOM
+
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Inicialização das funcionalidades
     initTipsFilter();
     initSmoothScrolling();
     initAnimations();
     initAutoRefresh();
     
-    // Sistema de filtro para as dicas
     function initTipsFilter() {
         const filterButtons = document.querySelectorAll('.filter-btn');
         const tipCards = document.querySelectorAll('.tip-card');
@@ -18,13 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
             button.addEventListener('click', function() {
                 const category = this.getAttribute('data-category');
                 
-                // Remove classe active de todos os botões
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 
-                // Adiciona classe active ao botão clicado
                 this.classList.add('active');
                 
-                // Filtra os cards
                 tipCards.forEach(card => {
                     const cardCategory = card.getAttribute('data-category');
                     
@@ -39,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Scroll suave para links internos
     function initSmoothScrolling() {
         const links = document.querySelectorAll('a[href^="#"]');
         
@@ -60,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Animações ao fazer scroll
     function initAnimations() {
         const observerOptions = {
             threshold: 0.1,
@@ -76,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }, observerOptions);
         
-        // Observa elementos que devem ser animados
         const animatedElements = document.querySelectorAll('.tip-card, .info-card, .result-card, .feature-item, .pollutant-card');
         
         animatedElements.forEach(element => {
@@ -87,28 +79,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Auto-refresh dos dados de qualidade do ar (a cada 5 minutos)
     function initAutoRefresh() {
         const airQualityData = document.querySelector('.air-quality-card');
         
         if (!airQualityData) return;
         
-        // Adiciona indicador de última atualização
         const timestamp = document.querySelector('.timestamp');
         if (timestamp) {
-            setInterval(updateTimestamp, 60000); // Atualiza a cada minuto
+            setInterval(updateTimestamp, 60000); 
         }
         
-        // Auto-refresh opcional (descomentado se necessário)
-        // setInterval(function() {
-        //     const selectedCity = document.querySelector('.city-select').value;
-        //     if (selectedCity) {
-        //         refreshAirQualityData(selectedCity);
-        //     }
-        // }, 300000); // 5 minutos
     }
     
-    // Atualiza o timestamp relativo
     function updateTimestamp() {
         const timestamp = document.querySelector('.timestamp');
         if (!timestamp) return;
@@ -135,28 +117,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Função para refresh dos dados (implementação futura)
     function refreshAirQualityData(city) {
-        // Esta função pode ser implementada para fazer uma requisição AJAX
-        // para atualizar os dados sem recarregar a página
+        
         console.log(`Atualizando dados para ${city}...`);
         
-        // Exemplo de implementação com fetch:
-        /*
-        fetch(`/api/air-quality/${encodeURIComponent(city)}`)
-            .then(response => response.json())
-            .then(data => {
-                updateAirQualityDisplay(data);
-            })
-            .catch(error => {
-                console.error('Erro ao atualizar dados:', error);
-            });
-        */
     }
     
-    // Função para atualizar a exibição dos dados (implementação futura)
     function updateAirQualityDisplay(data) {
-        // Atualiza os elementos da página com os novos dados
+        
         const aqiValue = document.querySelector('.aqi-value');
         const aqiStatus = document.querySelector('.status');
         const recommendation = document.querySelector('.recommendation');
@@ -165,7 +133,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (aqiStatus) aqiStatus.textContent = data.status;
         if (recommendation) recommendation.textContent = data.healthRecommendation;
         
-        // Atualiza os valores dos poluentes
         const pollutants = ['pm25', 'pm10', 'o3', 'no2', 'so2', 'co'];
         pollutants.forEach(pollutant => {
             const element = document.querySelector(`[data-pollutant="${pollutant}"] .value`);
@@ -175,13 +142,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Atualiza a cor do círculo AQI
         const aqiCircle = document.querySelector('.aqi-circle');
         if (aqiCircle) {
-            // Remove todas as classes de cor
+        
             aqiCircle.classList.remove('good', 'moderate', 'unhealthy-sensitive', 'unhealthy', 'very-unhealthy', 'hazardous');
             
-            // Adiciona a classe apropriada baseada no AQI
             if (data.aqi <= 50) {
                 aqiCircle.classList.add('good');
             } else if (data.aqi <= 100) {
@@ -197,7 +162,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Atualiza o timestamp
         const timestamp = document.querySelector('.timestamp');
         if (timestamp) {
             const now = new Date();
@@ -206,7 +170,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Adiciona efeitos visuais aos botões
     const buttons = document.querySelectorAll('.search-btn, .cta-button, .filter-btn');
     buttons.forEach(button => {
         button.addEventListener('mouseenter', function() {
@@ -218,7 +181,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Adiciona loading state ao formulário de busca
     const searchForm = document.querySelector('.search-form');
     if (searchForm) {
         searchForm.addEventListener('submit', function() {
@@ -230,7 +192,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Adiciona tooltips informativos (implementação simples)
     const pollutantCards = document.querySelectorAll('.pollutant-card');
     pollutantCards.forEach(card => {
         const pollutantName = card.querySelector('h4').textContent;
@@ -262,7 +223,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Adiciona funcionalidade de compartilhamento (implementação futura)
     function addShareFunctionality() {
         const shareButton = document.createElement('button');
         shareButton.innerHTML = '<i class="fas fa-share-alt"></i> Compartilhar';
@@ -290,7 +250,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     url: window.location.href
                 });
             } else {
-                // Fallback para navegadores que não suportam Web Share API
                 const url = window.location.href;
                 navigator.clipboard.writeText(url).then(() => {
                     alert('Link copiado para a área de transferência!');
@@ -298,14 +257,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Mostra o botão apenas quando há dados de qualidade do ar
         if (document.querySelector('.air-quality-card')) {
             document.body.appendChild(shareButton);
             shareButton.style.display = 'block';
         }
     }
     
-    // Inicializa funcionalidade de compartilhamento
     addShareFunctionality();
     
     console.log('AirMonitor JavaScript inicializado com sucesso!');

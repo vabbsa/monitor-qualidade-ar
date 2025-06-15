@@ -17,7 +17,6 @@ public class AirQualityService {
     private final WebClient webClient;
     private final Random random = new Random();
     
-    // Simulação de dados para diferentes cidades
     private final Map<String, Double[]> cityCoordinates = new HashMap<>();
     
     public AirQualityService() {
@@ -39,17 +38,15 @@ public class AirQualityService {
     }
     
     public Mono<AirQualityData> getAirQualityData(String city) {
-        // Para demonstração, vamos simular dados realistas
-        // Em produção, aqui seria feita a chamada para a API real
+        
         return Mono.fromCallable(() -> generateSimulatedData(city));
     }
     
     private AirQualityData generateSimulatedData(String city) {
         AirQualityData data = new AirQualityData(city);
         
-        // Simular dados baseados em características típicas de cada cidade
         int baseAqi = getCityBaseAqi(city);
-        int variation = random.nextInt(41) - 20; // Variação de -20 a +20
+        int variation = random.nextInt(41) - 20; 
         int finalAqi = Math.max(1, Math.min(500, baseAqi + variation));
         
         data.setAqi(finalAqi);
@@ -67,7 +64,7 @@ public class AirQualityService {
     }
     
     private int getCityBaseAqi(String city) {
-        // Valores base aproximados para diferentes cidades brasileiras
+        
         String cityLower = city.toLowerCase();
         if (cityLower.equals("são paulo")) {
             return 85;
@@ -95,7 +92,7 @@ public class AirQualityService {
     }
     
     private Double generatePm25FromAqi(int aqi) {
-        // Conversão aproximada de AQI para PM2.5 (μg/m³)
+        
         if (aqi <= 50) return random.nextDouble() * 12;
         if (aqi <= 100) return 12 + random.nextDouble() * 23;
         if (aqi <= 150) return 35 + random.nextDouble() * 20;
@@ -104,13 +101,13 @@ public class AirQualityService {
     }
     
     private Double generatePm10FromAqi(int aqi) {
-        // PM10 é geralmente 1.5-2x maior que PM2.5
+        
         Double pm25 = generatePm25FromAqi(aqi);
         return pm25 * (1.5 + random.nextDouble() * 0.5);
     }
     
     private Double generateO3FromAqi(int aqi) {
-        // Ozônio em μg/m³
+        
         if (aqi <= 50) return random.nextDouble() * 100;
         if (aqi <= 100) return 100 + random.nextDouble() * 68;
         if (aqi <= 150) return 168 + random.nextDouble() * 40;
@@ -118,7 +115,7 @@ public class AirQualityService {
     }
     
     private Double generateNo2FromAqi(int aqi) {
-        // NO2 em μg/m³
+        
         if (aqi <= 50) return random.nextDouble() * 40;
         if (aqi <= 100) return 40 + random.nextDouble() * 40;
         if (aqi <= 150) return 80 + random.nextDouble() * 40;
@@ -126,7 +123,7 @@ public class AirQualityService {
     }
     
     private Double generateSo2FromAqi(int aqi) {
-        // SO2 em μg/m³
+        
         if (aqi <= 50) return random.nextDouble() * 20;
         if (aqi <= 100) return 20 + random.nextDouble() * 60;
         if (aqi <= 150) return 80 + random.nextDouble() * 120;
@@ -134,7 +131,7 @@ public class AirQualityService {
     }
     
     private Double generateCoFromAqi(int aqi) {
-        // CO em mg/m³
+        
         if (aqi <= 50) return random.nextDouble() * 4;
         if (aqi <= 100) return 4 + random.nextDouble() * 5;
         if (aqi <= 150) return 9 + random.nextDouble() * 6;

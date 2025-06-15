@@ -15,7 +15,6 @@ public class Tip {
         this.icon = icon;
     }
     
-    // Getters e Setters
     public String getTitle() {
         return title;
     }
